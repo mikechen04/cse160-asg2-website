@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Change a point color</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        flex-direction: column;
+        font-family: Arial, sans-serif;
+      }
+      
+      #container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+      }
+      
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      
+      canvas {
+        display: block;
+        opacity: 0;
+        animation: fadeIn 0.64s ease-in forwards;
+        animation-delay: 0.08s;
+      }
+      
+      #numdot {
+        text-align: center;
+        margin: 10px 0;
+        opacity: 0;
+        animation: fadeIn 0.64s ease-in forwards;
+        animation-delay: 0.24s;
+      }
+      
+      .button-group {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        opacity: 0;
+        animation: fadeIn 0.64s ease-in forwards;
+      }
+      
+      .button-group:nth-of-type(1) {
+        animation-delay: 0.4s;
+      }
+      
+      .button-group:nth-of-type(2) {
+        animation-delay: 0.56s;
+      }
+      
+      .button-group:nth-of-type(3) {
+        animation-delay: 0.72s;
+      }
+      
+      button {
+        width: 120px;
+        padding: 8px;
+      }
+      
+      .slider-container {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        width: 300px;
+        opacity: 0;
+        animation: fadeIn 0.64s ease-in forwards;
+      }
+      
+      .slider-container:nth-child(6) {
+        animation-delay: 0.88s;
+      }
+      
+      .slider-container:nth-child(7) {
+        animation-delay: 1.04s;
+      }
+      
+      .slider-container:nth-child(8) {
+        animation-delay: 1.2s;
+      }
+      
+      .slider-container:nth-child(9) {
+        animation-delay: 1.36s;
+      }
+      
+      .slider-container:nth-child(10) {
+        animation-delay: 1.52s;
+      }
+      
+      .slider-container label {
+        display: inline-block;
+        width: 70px;
+        text-align: right;
+        vertical-align: middle;
+      }
+      
+      .slider-container input[type="range"] {
+        flex: 1;
+        vertical-align: middle;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="container">
+      <canvas id="webgl" width="400" height="400">
+        Please use a browser that supports "canvas"
+      </canvas>
+      
+      <p id="numdot"> XXX </p>
+
+      <div class="button-group">
+        <button type="button" id="green">Green</button>
+        <button type="button" id="red">Red</button>
+        <button type="button" id="clearButton">Clear</button>
+      </div>
+      
+      <div class="button-group">
+        <button type="button" id="pointButton">Point</button>
+        <button type="button" id="triButton">Triangle</button>
+        <button type="button" id="circleButton">Circle</button>
+        <button type="button" id="paintButton">Paint</button>
+      </div>
+      
+      <div class="button-group">
+        <button type="button" id="beeButton">Draw Bee</button>
+        <button type="button" id="beeDrawingButton" onclick="window.location.href='https://files.catbox.moe/hmk5sk.jpg'">Bee Drawing</button>
+      </div>
+
+      <div class="slider-container">
+        <label>Red</label>
+        <input type="range" min="0" max="100" value="100" class="slider" id="redSlide">
+      </div>
+      
+      <div class="slider-container">
+        <label>Green</label>
+        <input type="range" min="0" max="100" value="0" class="slider" id="greenSlide">
+      </div>
+      
+      <div class="slider-container">
+        <label>Blue</label>
+        <input type="range" min="0" max="100" value="0" class="slider" id="blueSlide">
+      </div>
+      
+      <div class="slider-container">
+        <label>Size</label>
+        <input type="range" min="5" max="40" value="0" class="slider" id="sizeSlide">
+      </div>
+      
+      <div class="slider-container">
+        <label>Segments</label>
+        <input type="range" min="3" max="50" value="20" class="slider" id="segmentsSlide">
+      </div>
+    </div>
+
+    <script src="lib/webgl-utils.js"></script>
+    <script src="lib/webgl-debug.js"></script>
+    <script src="lib/cuon-utils.js"></script>
+    <script src="Points.js"></script>
+    <script src="Triangle.js"></script>
+    <script src="Circle.js"></script>
+    <script src="Bee.js"></script>
+    <script src="ColoredPoints.js"></script>
+    <script>
+      // Call main after all scripts are loaded
+      main();
+    </script>
+  </body>
+</html>
